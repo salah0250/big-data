@@ -1,0 +1,62 @@
+<!-- visites.component.html -->
+<h2>Visites Cassandra</h2>
+<table class="visite-table">
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Heure</th>
+    <th>Médecin</th>
+    <th>Patient</th>
+    <th>Motif</th>
+    <th>Notes</th>
+    <th>Prescription</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let visite of cassandravisites">
+    <td>{{ visite.dateVisite }}</td>
+    <td>{{ visite.heureVisite }}</td>
+    <td>{{ visite.medecinId }}</td>
+    <td>{{ visite.patientId }}</td>
+    <td>{{ visite.motifVisite }}</td>
+    <td>{{ visite.notesMedecin }}</td>
+    <td>{{ visite.prescription }}</td>
+    <td>
+      <button class="action-button" (click)="updateVisite(visite)">Update</button>
+      <button class="action-button delete-button" (click)="deleteCassandraVisite(visite)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>Visites mongo</h2>
+<table class="visite-table">
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Heure</th>
+    <th>Médecin</th>
+    <th>Patient</th>
+    <th>Motif</th>
+    <th>Notes</th>
+    <th>Prescription</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let visite of mongovisites">
+    <td>{{ visite.dateVisite }}</td>
+    <td>{{ visite.heureVisite }}</td>
+    <td>{{ visite.medecinId }}</td>
+    <td>{{ visite.patientId }}</td>
+    <td>{{ visite.motifVisite }}</td>
+    <td>{{ visite.notesMedecin }}</td>
+    <td>{{ visite.prescription }}</td>
+    <td>
+      <button class="action-button" (click)="updateVisite(visite)">Update</button>
+      <button class="action-button delete-button" (click)="deleteMongoVisite(visite)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

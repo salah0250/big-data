@@ -1,0 +1,25 @@
+<h2>Update Component</h2>
+
+<form *ngIf="medecin" #updateForm="ngForm" (ngSubmit)="updateMedecin()">
+  <div class="form-group">
+    <label for="nom">Nom:</label>
+    <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="medecin.nom" >
+  </div>
+  <div class="form-group">
+    <label for="prenom">Prénom:</label>
+    <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="medecin.prenom">
+  </div>
+  <div class="form-group">
+    <label for="specialite">Spécialité:</label>
+    <input type="text" class="form-control" id="specialite" name="specialite" [(ngModel)]="medecin.specialite">
+  </div>
+  <div class="form-group">
+    <label for="horaires">Horaires:</label>
+    <input type="text" class="form-control" id="horaires" name="horaires" [(ngModel)]="medecin.horaires">
+  </div>
+  <div class="form-group">
+    <label for="contact">Contact:</label>
+    <input type="text" class="form-control" id="contact" name="contact" [(ngModel)]="medecin.contact">
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>

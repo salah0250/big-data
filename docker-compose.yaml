@@ -1,0 +1,44 @@
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+      - ./src/main/resources/scripts/init-cassandra.cql:/init-cassandra.cql
+    environment:
+      - CASSANDRA_CLUSTER_NAME=BD
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    networks:
+      - backend
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        nohup /usr/local/bin/docker-entrypoint.sh cassandra -f & # Démarrer Cassandra en arrière-plan
+        echo "Waiting for Cassandra to start..."
+        until cqlsh -e 'describe cluster' ; do 
+          echo "Cassandra has not started yet - waiting"
+          sleep 2
+        done
+        echo "Cassandra is up - executing command"
+        cqlsh -f /init-cassandra.cql # Exécuter le script d'initialisation pour créer le keyspace
+        tail -f /dev/null # Garder le conteneur en vie
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - backend
+
+volumes:
+  cassandra_data:
+  mongo_data:
+
+networks:
+  backend:
+    driver: bridge

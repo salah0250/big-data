@@ -1,0 +1,50 @@
+<h2>Medecins in Cassandra</h2>
+<button class="action-button delete-all-button" (click)="deleteAllMedecins()">Delete All</button>
+<table class="medecin-table">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Spécialité</th>
+    <th>Horaires</th>
+    <th>Contact</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let medecin of cassandraMedecins">
+    <td>{{ medecin.nom }}</td>
+    <td>{{ medecin.specialite }}</td>
+    <td>{{ medecin.horaires }}</td>
+    <td>{{ medecin.contact }}</td>
+    <td>
+      <button class="action-button" (click)="updateMedecin(medecin)">Update</button>
+      <button class="action-button delete-button" (click)="deleteMedecinCassandra(medecin)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>Medecins in MongoDB</h2>
+<table class="medecin-table">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Spécialité</th>
+    <th>Horaires</th>
+    <th>Contact</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let medecin of mongodbMedecins">
+    <td>{{ medecin.nom }}</td>
+    <td>{{ medecin.specialite }}</td>
+    <td>{{ medecin.horaires }}</td>
+    <td>{{ medecin.contact }}</td>
+    <td>
+      <button class="action-button" (click)="updateMedecin(medecin)">Update</button>
+      <button class="action-button delete-button" (click)="deleteMedecinMongo(medecin)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,46 @@
+.medecin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.medecin-table th, .medecin-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.medecin-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.medecin-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.medecin-table tr:hover {
+  background-color: #ddd;
+}
+
+.action-button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.delete-button {
+  background-color: #f44336;
+}
+
+.action-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button:hover {
+  background-color: #f44336;
+}

@@ -1,0 +1,68 @@
+<script src="traitement.component.ts"></script>
+<div class="benchmark-container">
+  <!-- Bouton pour lancer le benchmark d'insertion -->
+  <button type="button" (click)="benchmarkInsert()">Benchmark d'Insertion</button>
+</div>
+
+<h2>Résultats du Benchmark d'Insertion</h2>
+
+<table *ngIf="results.length > 0" class="results-table">
+  <thead>
+  <tr>
+    <th>Taille des Données</th>
+    <th>Temps d'Insertion (Cassandra)</th>
+    <th>Temps d'Insertion (MongoDB)</th>
+    <th>Mémoire (Cassandra)</th>
+    <th>Mémoire (MongoDB)</th>
+    <th>Utilisation CPU (Cassandra)</th>
+    <th>Utilisation CPU (MongoDB)</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let result of results" class="result-row">
+    <td>{{ result.dataSize }}</td>
+    <td>{{ result.elapsedTimeCassandra }} ms</td>
+    <td>{{ result.elapsedTimeMongoDB }} ms</td>
+    <td *ngIf="result.memoryMetricsDiffCassandra">{{ result.memoryMetricsDiffCassandra.usedMemory }}</td>
+    <td *ngIf="!result.memoryMetricsDiffCassandra">N/A</td>
+    <td *ngIf="result.memoryMetricsDiffMongoDB">{{ result.memoryMetricsDiffMongoDB.usedMemory }}</td>
+    <td *ngIf="!result.memoryMetricsDiffMongoDB">N/A</td>
+    <td *ngIf="result.cpuMetricsDiffCassandra">{{ result.cpuMetricsDiffCassandra.cpuUsage }}</td>
+    <td *ngIf="!result.cpuMetricsDiffCassandra">N/A</td>
+    <td *ngIf="result.cpuMetricsDiffMongoDB">{{ result.cpuMetricsDiffMongoDB.cpuUsage }}</td>
+    <td *ngIf="!result.cpuMetricsDiffMongoDB">N/A</td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="results.length === 0" class="no-results-message">
+  <p>Aucun résultat disponible. Veuillez exécuter le benchmark d'insertion pour afficher les résultats.</p>
+</div>
+
+<div class="benchmark-container">
+  <!-- traitement.component.html -->
+
+  <div>
+    <button (click)="benchmarkInsertManyTime()">Benchmark Insert Many Times</button>
+  </div>
+
+  <table *ngIf="resufinals.length > 0" class="results-table">
+    <thead>
+    <tr>
+      <th>Temps d'insertion moyen (Cassandra)</th>
+      <th>Temps d'insertion moyen (MongoDB)</th>
+      <th>Temps de suppression moyen (Cassandra)</th>
+      <th>Temps de suppression moyen (MongoDB)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ resufinals[0] }}</td>
+      <td>{{ resufinals[1] }}</td>
+      <td>{{ resufinals[2] }}</td>
+      <td>{{ resufinals[3] }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,59 @@
+<div>
+  <h2>Create Visite (Cassandra)</h2>
+  <form (submit)="createVisiteCassandra()">
+    <!-- Formulaire pour Cassandra -->
+    <!-- Champs communs -->
+    <label>Date:</label>
+    <input type="date" [(ngModel)]="visite.dateVisite" name="dateVisite" required><br><br>
+    <label>Heure:</label>
+    <input type="time" [(ngModel)]="visite.heureVisite" name="heureVisite" required><br><br>
+    <label>Médecin:</label>
+    <select [(ngModel)]="visite.medecinId" name="medecinId" required>
+      <option *ngFor="let medecin of medecins" [value]="medecin.uuid">{{ medecin.nom }}</option>
+    </select><br><br>
+    <label>Patient:</label>
+    <select [(ngModel)]="visite.patientId" name="patientId" required>
+      <option *ngFor="let patient of patients" [value]="patient.uuid">{{ patient.nom }}</option>
+    </select><br><br>
+    <label>Motif:</label>
+    <input type="text" [(ngModel)]="visite.motifVisite" name="motifVisite" required><br><br>
+
+    <label>Notes Médecin:</label>
+    <textarea [(ngModel)]="visite.notesMedecin" name="notesMedecin"></textarea><br><br>
+
+    <label>Prescription:</label>
+    <textarea [(ngModel)]="visite.prescription" name="prescription"></textarea><br><br>
+    <!-- Champs spécifiques à Cassandra -->
+    <!-- Ajoutez ici des champs spécifiques à Cassandra si nécessaire -->
+    <button type="submit">Create (Cassandra)</button>
+  </form>
+
+  <h2>Create Visite (Mongo)</h2>
+  <form (submit)="createVisiteMongo()">
+    <!-- Formulaire pour MongoDB -->
+    <!-- Champs communs -->
+    <label>Date:</label>
+    <input type="date" [(ngModel)]="visite.dateVisite" name="dateVisite" required><br><br>
+    <label>Heure:</label>
+    <input type="time" [(ngModel)]="visite.heureVisite" name="heureVisite" required><br><br>
+    <label>Médecin:</label>
+    <select [(ngModel)]="visite.medecinId" name="medecinId" required>
+      <option *ngFor="let medecin of medecins" [value]="medecin.uuid">{{ medecin.nom }}</option>
+    </select><br><br>
+    <label>Patient:</label>
+    <select [(ngModel)]="visite.patientId" name="patientId" required>
+      <option *ngFor="let patient of patients" [value]="patient.uuid">{{ patient.nom }}</option>
+    </select><br><br>
+    <label>Motif:</label>
+    <input type="text" [(ngModel)]="visite.motifVisite" name="motifVisite" required><br><br>
+
+    <label>Notes Médecin:</label>
+    <textarea [(ngModel)]="visite.notesMedecin" name="notesMedecin"></textarea><br><br>
+
+    <label>Prescription:</label>
+    <textarea [(ngModel)]="visite.prescription" name="prescription"></textarea><br><br>
+    <!-- Champs spécifiques à MongoDB -->
+    <!-- Ajoutez ici des champs spécifiques à MongoDB si nécessaire -->
+    <button type="submit">Create (Mongo)</button>
+  </form>
+</div>
